@@ -1,0 +1,69 @@
+.mobile-picture-btn-wrap.hide {
+  display: none;
+}
+.mobile-camera-icon {
+  bottom: 0;
+  right: 0;
+}
+.fs-tab {
+  font-size: 20px;
+  line-height: 24px;
+}
+.fs-settings-label {
+  font-size: 20px;
+  line-height: 24px;
+}
+@media only screen and (max-width: 991.99px) {
+  .fs-tab {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .fs-settings-label {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+@media only screen and (max-width: 349.99px) {
+  .fs-tab {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.settings-tab-btn {
+  outline: none;
+}
+.settings-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2.5px;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  border-radius: 2.5px;
+  background: #AF13AF;
+  transition: width 500ms ease-in-out;
+}
+.settings-tab-btn.current::after {
+  width: 100%;
+}
+.settings-tab-page.hide {
+  display: none;
+}
+
+@media only screen and (min-width: 992px){
+ .profile-input::placeholder{
+  color: #FFFFFF;
+}
+}
+input[type="file"] {
+  display: none;
+}
+.form-input-picture {
+  background: #FFFFFF;
+  border: 0.75px solid #CAD4DD;
+  outline: none;
+}
+.profile-pic-wrap {
+  overflow: hidden;
+}

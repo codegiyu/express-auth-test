@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience Life - Make yourself comfortable.">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <title>Admin Dashboard | Kimberly Hotel</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+<body class="lg-bg-neutral-6">
+    <header>
+        <nav class="navbar bg-white d-flex align-items-center justify-content-between border-none lg-border-bottom hms-border m-0 p-0 py-3 py-lg-2">
+            <a href="index.html" class="navbar-brand height-50px md-height-75px ms-3 ms-md-5 ms-lg-4 ms-xl-5">
+                <img src="img/logo.png" alt="Our Logo" class="h-100">
+            </a>
+            <div class="d-none d-lg-flex align-items-center">
+                <h5 class="fs-headline-3 text-grey-4 fw-700 me-3">Dashboard</h5>
+                <form id="nav-search-form" action="" method="">
+                    <div class="nav-input-wrap d-flex border hms-border bdr-rad-1">
+                        <button type="submit" id="nav-search-btn" class="input-button bg-neutral-5 w-auto fs-form-input text-grey-6 px-3 py-3"><i class="fa-solid fa-magnifying-glass fs-form-input"></i></button>
+                        <input type="search" id="nav-search-input" name="search" class="form-input-footer bg-neutral-5 text-grey-1 fs-form-input width-250px xl-width-350px py-3 pe-3" placeholder="Search employees" autocomplete="name" required>
+                    </div>
+                </form>
+            </div>
+            <div class="user d-none me-3 me-lg-4 me-xl-5 d-lg-flex align-items-center">
+                <div class="user-text d-none d-lg-flex flex-column justify-content-center me-lg-4">
+                    <h6 class="user-name text-pink fs-body-2 fw-700 m-0"></h6>
+                    <p class="user-role text-grey-1 text-center fs-input m-0 mt-1"></p>
+                </div>
+                <div class="user-pic">
+                    <img  src="img/anonymous.png" alt="User image" class="user-photo img-fluid">
+                </div>
+            </div>
+            <button class="navbar-toggler bg-pink-1 d-block d-lg-none py-2 px-3 me-3 me-md-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminMobileMenu" aria-controls="adminMobileMenu">
+                <span class=""><i class="fa-solid fa-bars text-white"></i></span>
+            </button>
+              
+            <div class="offcanvas offcanvas-start width-200px" tabindex="-1" id="adminMobileMenu" aria-label="Kimberly Hotels">
+                <div class="offcanvas-header">
+                </div>
+                <div class="offcanvas-body p-0">
+                    <div class="user mb-4 ms-2 d-flex align-items-center">
+                        <div class="offcanvas-user-pic width-75px height-75px">
+                            <img src="img/anonymous.png" alt="User image" class="user-photo img-fluid">
+                        </div>
+                        <div class="user-text d-flex flex-column justify-content-center ms-2">
+                            <h6 class="user-name text-pink fs-body-2 fw-700 m-0">Kingston I.</h6>
+                            <p class="user-role text-grey-1 text-center fs-input m-0 mt-1">Admin</p>
+                        </div>
+                    </div>
+                    <div class="sidenav bg-white d-flex flex-column justify-content-between">
+                        <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1 active">
+                            <a href="index.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                                <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="tabler:layout-dashboard"></span> Dashboard</p>
+                            </a>
+                        </div>
+                        <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1">
+                            <a href="employees.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                                <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="prime:id-card"></span> Employees</p>
+                            </a>
+                        </div>
+                        <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1">
+                            <a href="settings.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                                <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:settings-24-regular" data-rotate="90deg"></span> Settings</p>
+                            </a>
+                        </div>
+                        <div class="sidenav-link logout bg-white d-flex align-items-center justify-content-start my-1">
+                            <a class="text-decoration-none bg-white ps-4 py-2 width-98 position-relative" role="button" data-bs-toggle="modal" data-bs-target="#logoutModalNav">
+                                <p class="text-grey-1 fs-sidenav error-text text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:power-24-filled"></span> Log out</p>
+                            </a>
+                            <div class="modal" data-bs-backdrop="static" data-bs-keyboard="false" id="logoutModalNav" tabindex="-1" aria-label="Logout" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content bg-white border hms-border p-0">
+                                        <div class="modal-body p-4 p-md-5">
+                                            <h6 class="text-center fs-body-2 text-black fw-700 mt-4">Are you sure you want to logout?</h6>
+                                            <div class="d-flex justify-content-between pt-2 pb-4">
+                                                <button type="button" class="ghost-primary-btn width-48 text-center fs-body-2 fw-700 text-pink bdr-rad-2 py-3 my-3" data-bs-dismiss="modal" aria-label="Close">No</button>
+                                                <a href="login.html" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row d-block d-lg-none py-3 py-md-5">
+                <h5 class="fs-headline-3 text-center text-grey-4 fw-700 mb-4">Dashboard</h5>
+                <form id="main-search-form" action="" method="post" class="width-100 mx-auto">
+                    <div class="nav-input-wrap d-flex border hms-border bdr-rad-1">
+                        <button type="submit" id="main-search-btn" class="input-button bg-neutral-5 w-auto fs-form-input text-grey-6 px-3 py-3"><i class="fa-solid fa-magnifying-glass fs-form-input"></i></button>
+                        <input type="search" id="main-search-input" name="search-mob" class="form-input-footer bg-neutral-5 text-grey-1 fs-form-input width-95 py-3 pe-3" placeholder="Search employees" autocomplete="name" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="row p-0 m-0">
+            <div class="col-lg-2 d-none d-lg-block bg-neutral-5 border-end hms-border p-0 m-0">
+
+                <div class="sidenav bg-neutral-5 d-flex flex-column justify-content-between">
+                    <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1 active">
+                        <a href="index.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                            <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="tabler:layout-dashboard"></span> Dashboard</p>
+                        </a>
+                    </div>
+                    <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1">
+                        <a href="employees.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                            <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="prime:id-card"></span> Employees</p>
+                        </a>
+                    </div>
+                    <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1">
+                        <a href="settings.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                            <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:settings-24-regular" data-rotate="90deg"></span> Settings</p>
+                        </a>
+                    </div>
+                    <div class="sidenav-link logout bg-neutral-5 d-flex align-items-center justify-content-start my-1">
+                        <a class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98 position-relative" role="button" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <p class="text-grey-1 fs-sidenav error-text text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:power-24-filled"></span> Log out</p>
+                        </a>
+                        <div class="modal" data-bs-backdrop="static" data-bs-keyboard="false" id="logoutModal" tabindex="-1" aria-label="Logout" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-white border border-secondary p-0">
+                                    <div class="modal-body p-4 p-md-5">
+                                        <h6 class="text-center fs-body-2 text-black fw-700 mt-4">Are you sure you want to logout?</h6>
+                                        <div class="d-flex justify-content-between pt-2 pb-4">
+                                            <button type="button" class="ghost-primary-btn width-48 text-center fs-body-2 fw-700 text-pink bdr-rad-2 py-3 my-3" data-bs-dismiss="modal" aria-label="Close">No</button>
+                                            <a href="login.html" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content col-12 col-lg-10 position-relative">
+                <div class="container py-4 px-0 px-lg-4">
+                    <div class="row mt-0 mt-lg-3">
+                        <div class="mb-3 col-lg-3 col-md-6 col-12 px-3 px-md-1">
+                            <div class="content-box-2 radialBarContent bg-white p-2 pt-0 pe-0 border lg-border-none bdr-width-1 purple-border">
+                                <div class="d-flex align-items-center justify-content-end position-relative">
+                                    <div class="d-flex flex-column align-items-start justify-content-start justify-content-lg-center ps-2 ps-lg-0 ps-xl-2 pt-4 pt-lg-0 position-absolute top-0 start-0 w-100 h-100">
+                                        <p class="fs-form-input text-grey-6 m-0 my-3 my-lg-0">New Booking</p>
+                                        <p class="fs-body-2 fw-700 m-0">684</p>
+                                    </div>
+                                    <div id="new-booking" class="width-50 lg-width-auto p-0"></div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-3 col-lg-3 col-md-6 col-12 px-3 px-md-1">
+                            <div class="content-box-2 radialBarContent bg-white p-2 pt-0 pe-0 border lg-border-none bdr-width-1 orange-border">
+                                <div class="d-flex align-items-center justify-content-end position-relative">
+                                    <div class="d-flex flex-column align-items-start justify-content-start justify-content-lg-center ps-2 ps-lg-0 ps-xl-2 pt-4 pt-lg-0 position-absolute top-0 start-0 w-100 h-100">
+                                        <p class="fs-form-input text-grey-6 m-0 my-3 my-lg-0">Scheduled Rooms</p>
+                                        <p class="fs-body-2 fw-700 m-0">546</p>
+                                    </div>
+                                    <div id="scheduled-rooms" class="width-50 lg-width-auto p-0"></div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-3 col-lg-3 col-md-6 col-12 px-3 px-md-1">
+                            <div class="content-box-2 radialBarContent bg-white p-2 pt-0 pe-0 border lg-border-none bdr-width-1 green-border">
+                                <div class="d-flex align-items-center justify-content-end position-relative">
+                                    <div class="d-flex flex-column align-items-start justify-content-start justify-content-lg-center ps-2 ps-lg-0 ps-xl-2 pt-4 pt-lg-0 position-absolute top-0 start-0 w-100 h-100">
+                                        <p class="fs-form-input text-grey-6 m-0 my-3 my-lg-0">Check-in</p>
+                                        <p class="fs-body-2 fw-700 m-0">532</p>
+                                    </div>
+                                    <div id="check-in" class="width-50 lg-width-auto p-0"></div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-3 col-lg-3 col-md-6 col-12 px-3 px-md-1">
+                            <div class="content-box-2 radialBarContent bg-white p-2 pt-0 pe-0 border lg-border-none">
+                                <div class="d-flex align-items-center justify-content-end position-relative bdr-width-1 red-border">
+                                    <div class="d-flex flex-column align-items-start justify-content-start justify-content-lg-center ps-2 ps-lg-0 ps-xl-2 pt-4 pt-lg-0 position-absolute top-0 start-0 w-100 h-100">
+                                        <p class="fs-form-input text-grey-6 m-0 my-3 my-lg-0">Check-out</p>
+                                        <p class="fs-body-2 fw-700 m-0">90</p>
+                                    </div>
+                                    <div id="check-out" class="width-50 lg-width-auto p-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-0 mt-lg-3">
+                        <div class="pb-3 col-lg-9 col-12 px-1">
+                            <div id="here" class="content-box-2 bg-white py-4 px-3">
+                                <div class="bar-chart-wrap w-100 h-100 d-flex flex-column">
+                                    <div class="d-flex justify-content-between align-items-center py-2">
+                                        <h6 class="fs-nav fw-600 mb-3">Total Revenue</h6>
+                                        <div class="d-flex border-bottom py-0">
+                                            <p role="button" id="year-tab-btn" class="revenue-tab-btn position-relative fs-form-input fw-600 text-grey-6 py-2 px-1 bdr-rad-2 my-0 me-2 me-md-3" data-page="#bar-chart-years">Yearly</p>
+                                            <p role="button" id="month-tab-btn" class="revenue-tab-btn position-relative fs-form-input fw-600 text-grey-6 py-2 px-1 bdr-rad-2 my-0 me-2 me-md-3" data-page="#bar-chart-months">Monthly</p>
+                                            <p role="button" id="day-tab-btn" class="revenue-tab-btn position-relative fs-form-input fw-600 text-grey-6 py-2 px-1 bdr-rad-2 my-0 active" data-page="#bar-chart-days">Daily</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="fs-body-1 fw-700 me-5">₦236,535</h5>
+                                        <div class="d-flex ms-4 align-items-center">
+                                            <div class="ratio ratio-1x1 rounded-circle bg-pink-1 d-flex align-items-center justify-content-center width-20px p-0 me-2">
+                                                <i class="fa fa-arrow-up fs-form-input text-white text-center m-0 mt-1"></i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="fs-body-2 text-pink fs-600 m-0">0.8%</h6>
+                                                <p class="fs-form-input text-grey-6 m-0">Than last day</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="bar-chart-days" class="revenue-tab-page w-100 m-0 p-0"></div>
+                                    <div id="bar-chart-months" class="revenue-tab-page w-100 m-0 p-0 hide"></div>
+                                    <div id="bar-chart-years" class="revenue-tab-page w-100 m-0 p-0 hide"></div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="pb-3 col-lg-3 col-12 px-1">
+                            <div class="content-box-2 bg-white py-4 px-3">
+                                <h6 class="fs-nav fw-700 mb-3">Recent Customers</h6>
+                                <ul class="list-style-none p-0 m-0">
+                                    <li class="d-flex align-items-center my-2 py-1">
+                                        <div class="width-40px height-40px rounded me-2">
+                                            <img src="img/cg-customer-1.png" alt="" class="img-fluid">
+                                        </div>
+                                        <div class="d-flex justify-content-center flex-column">
+                                            <p class="fs-copyright fw-600 m-0 p-0">Ifeoluwa Joy-Fehin</p>
+                                            <p class="fs-form-input text-grey-6 m-0 p-0">Member</p>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center my-2 py-1">
+                                        <div class="width-40px height-40px rounded me-2">
+                                            <img src="img/cg-customer-2.png" alt="" class="img-fluid">
+                                        </div>
+                                        <div class="d-flex justify-content-center flex-column">
+                                            <p class="fs-copyright fw-600 m-0 p-0">Udeme Jonah</p>
+                                            <p class="fs-form-input text-grey-6 m-0 p-0">Member</p>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center my-2 py-1">
+                                        <div class="width-40px height-40px rounded me-2">
+                                            <img src="img/cg-customer-3.png" alt="" class="img-fluid">
+                                        </div>
+                                        <div class="d-flex justify-content-center flex-column">
+                                            <p class="fs-copyright fw-600 m-0 p-0">Amara</p>
+                                            <p class="fs-form-input text-grey-6 m-0 p-0">Regular Customer</p>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center my-2 py-1">
+                                        <div class="width-40px height-40px rounded me-2">
+                                            <img src="img/cg-customer-4.png" alt="" class="img-fluid">
+                                        </div>
+                                        <div class="d-flex justify-content-center flex-column">
+                                            <p class="fs-copyright fw-600 m-0 p-0">Mariam</p>
+                                            <p class="fs-form-input text-grey-6 m-0 p-0">Member</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-0 mt-lg-3">
+                        <div class="mb-3 col-lg-6 col-12 px-1">
+                            <div class="content-box-2 bg-white py-4 px-3">
+                                <div class="d-flex align-items-center justify-content-end position-relative">
+                                    <div class="d-flex flex-column align-items3start justify-content-start ps-2 ps-lg-0 ps-xl-2 pt-2 pt-lg-0 position-absolute top-0 start-0 w-100 h-100">
+                                        <h6 class="fs-nav fw-700 ms-2 mt-1 mt-lg-3 mb-2 mb-md-3">Hotel Referrals</h6>
+                                        <ul class="referral-list list-style-none width-40 xl-width-40 p-0">
+                                            <li class="referral-text d-flex justify-content-between align-items-center my-3 my-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ratio ratio-1x1 width-8px lg-width-12px rounded-circle bg-blue-2 me-2 me-lg-1"></div>
+                                                    <p class="fs-form-input m-0">Social Media</p>
+                                                </div>
+                                                <p class="fs-form-input m-0">20%</p>
+                                            </li>
+                                            <li class="referral-text d-flex justify-content-between align-items-center my-3 my-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ratio ratio-1x1 width-8px lg-width-12px rounded-circle bg-sky me-2 me-lg-1"></div>
+                                                    <p class="fs-form-input m-0">Friends</p>
+                                                </div>
+                                                <p class="fs-form-input m-0">35%</p>
+                                            </li>
+                                            <li class="referral-text d-flex justify-content-between align-items-center my-3 my-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ratio ratio-1x1 width-8px lg-width-12px rounded-circle bg-lime me-2 me-lg-1"></div>
+                                                    <p class="fs-form-input m-0">Websites</p>
+                                                </div>
+                                                <p class="fs-form-input m-0">15%</p>
+                                            </li>
+                                            <li class="referral-text d-flex justify-content-between align-items-center my-3 my-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ratio ratio-1x1 width-8px lg-width-12px rounded-circle bg-yellow me-2 me-lg-1"></div>
+                                                    <p class="fs-form-input m-0">Digital Ads</p>
+                                                </div>
+                                                <p class="fs-form-input m-0">18%</p>
+                                            </li>
+                                            <li class="referral-text d-flex justify-content-between align-items-center my-3 my-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ratio ratio-1x1 width-8px lg-width-12px rounded-circle bg-orangered me-2 me-lg-1"></div>
+                                                    <p class="fs-form-input m-0">Others</p>
+                                                </div>
+                                                <p class="fs-form-input m-0">12%</p>
+                                            </li>
+                                        </ul>  
+                                    </div>
+                                    <div id="referrals" class="width-50 lg-width-auto p-0"></div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-3 col-lg-6 col-12 px-1">
+                            <div class="content-box-2 bg-white py-4 px-3">
+                                <div id="line-chart" class="w-100 m-0 p-0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="row mt-0 mt-lg-3 px-1">
+                        <div class="content-box-2 bg-white py-4 px-4 position-relative">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <h6 class="fw-600 fs-nav">Property List</h6>
+                                </div>
+                                <div class="col-12 col-lg-6 d-flex justify-content-start justify-content-lg-end mt-2 mt-lg-0">
+                                    <p role="button" class="property-tab-btn active fs-form-input fw-600 text-pink p-2 bdr-rad-2 me-2 me-md-3 me-lg-4" data-page="#property-images">Popular</p>
+                                    <p role="button" class="property-tab-btn fs-form-input fw-600 text-pink p-2 bdr-rad-2 me-2 me-md-3 me-lg-4" data-page="#property-images">Recommended</p>
+                                    <p role="button" class="property-tab-btn fs-form-input fw-600 text-pink p-2 bdr-rad-2" data-page="#property-images">Newest</p>
+                                </div>
+                            </div>
+                            <div id="property-images" class="property-tab-page row py-1 py-lg-3">
+                                <div class="col-md-4 col-12 mb-4 mb-lg-0">
+                                    <div class="property-wrap">
+                                        <img src="img/ay-Room - imp 1.png" class="d-block w-100" alt="...">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <span class="fw-700 fs-property">Signature Room</span>
+                                        <p class="fw-500 fs-property text-pink bg-light-1 bdr-rad-2 p-2 m-0">#155,000</p>
+                                        </div>
+                                    </div>
+                                </div>
+            
+            
+                                <div class="col-md-4 col-12 mb-4 mb-lg-0">
+                                    <div class="property-wrap">
+                                        <img src="img/ay-Experience 1 1.png" class="d-block w-100" alt="...">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <span class="fw-700 fs-property">Superior Room</span>
+                                            <p class="fw-500 fs-property text-pink bg-light-1 bdr-rad-2 p-2 m-0">#320,000</p>
+                                        </div>
+                                    </div>
+                                </div>
+            
+            
+                                <div class="col-md-4 col-12 mb-4 mb-lg-0">
+                                    <div class="property-wrap">
+                                        <img src="img/ay-Room Deluxe 1.png" class="d-block w-100" alt="...">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <span class="fw-700 fs-property">Deluxe Room</span>
+                                            <p class="fw-500 fs-property text-pink bg-light-1 bdr-rad-2 p-2 m-0">#400,000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-none d-md-flex position-absolute top-50 end-0 translate-y-middle rounded-circle p-1 m-0">
+                                <a href="rooms.html" class="more-properties text-decoration-none rounded-circle">
+                                   <span class="m-0 p-0 rounded-circle"><i class="fa fa-angle-right fs-button text-black fw-700 rounded-circle p-0 m-1"></i></span> 
+                                </a>
+                            </div>
+                            <div class="d-flex d-md-none justify-content-end m-0">
+                                <a href="rooms.html" class="more-properties text-decoration-none rounded-circle">
+                                   <span class="m-0 p-0 rounded-circle"><i class="fa fa-angle-down fs-button text-black fw-700 rounded-circle p-0 m-1"></i></span> 
+                                </a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/dashboard.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

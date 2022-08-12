@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-flash": "^0.0.2",
+    "express-override": "^0.1.9",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "http-errors-enhanced": "^1.0.6",
+    "mysql": "^2.18.1"
+  }
+}

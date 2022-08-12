@@ -1,0 +1,112 @@
+.bg-light-1 { 
+    background-color:#F0EEFF;
+}
+.bg-light-2 {
+    background-color: #D5D0FC;
+}
+
+.property-tab-btn.active {
+    background: #D5D0FC;
+}
+.property-tab-page {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform ease-in-out 500ms, opacity ease-in-out 350ms;
+}
+.property-tab-page.hide {
+    opacity: 0;
+    transform: scale(0.6);
+}
+.fs-property {
+    font-size: 16px;
+    line-height: 16px;
+}
+@media only screen and (max-width: 991.99px) {
+    .fs-property {
+        font-size: 14px;
+        line-height: 14px;
+    }
+}
+
+.red-border {
+    border-color: #FE6D8E !important;
+}
+.purple-border {
+    border-color: #6C5DD3 !important;
+}
+.orange-border {
+    border-color: #FD8539 !important;
+}
+.green-border {
+    border-color: #2ED480 !important;
+}
+
+.revenue-tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    border-radius: 1.5px;
+    background: #AF13AF;
+    transition: width 500ms ease-in-out;
+}
+.revenue-tab-btn.active::after {
+    width: 100%;
+}
+.revenue-tab-page.hide {
+    display: none;
+}
+
+.radialBarContent {
+    max-height: 120px;
+    overflow-y: hidden;
+}
+@media only screen and (max-width: 991.99px) {
+   .radialBarContent .fs-form-input {
+        font-size: 15px !important;
+        line-height: 15px !important;
+   }
+   .radialBarContent .fs-body-2 {
+    font-size: 22px !important;
+    line-height: 22px !important;
+}  
+}
+@media only screen and (min-width: 992px) and (max-width: 1150px) {
+    .radialBarContent {
+        max-height: 90px;
+    }
+}
+@media only screen and (min-width: 1150.01px) {
+    .radialBarContent {
+        max-height: 100px;
+    }
+}
+
+.bg-blue-2 { background: #4879F5;}
+.bg-sky { background: #44D2F1;}
+.bg-lime { background: #20C745;}
+.bg-yellow { background: #F4A74B;}
+.bg-orangered { background: #F45252;}
+
+@media only screen and (min-width: 567px) and (max-width: 991.99px) {
+    .referral-text .fs-form-input {
+        font-size: 16px;
+        line-height: 16px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .referral-text .fs-form-input {
+        font-size: 10px;
+        line-height: 10px;
+    }
+    .referral-text {
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+    }
+    .referral-list {
+        width: 45%;
+    }
+}

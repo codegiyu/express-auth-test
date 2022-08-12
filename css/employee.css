@@ -1,0 +1,133 @@
+.employee-tab-btn {
+    outline: none;
+}
+.employee-tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2.5px;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    border-radius: 2.5px;
+    background: #AF13AF;
+    transition: width 500ms ease-in-out;
+}
+.employee-tab-btn.active {
+    color: #1A1A1A;
+}
+.employee-tab-btn.active::after {
+    width: 100%;
+}
+
+.employee-tab-btn-mobile {
+    outline: none;
+}
+.employee-tab-btn-mobile::after {
+    content: '';
+    position: absolute;
+    bottom: -2.5px;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    border-radius: 2.5px;
+    background: #AF13AF;
+    transition: width 500ms ease-in-out;
+}
+.employee-tab-btn-mobile.active {
+    color: #1A1A1A;
+}
+.employee-tab-btn-mobile.active::after {
+    width: 100%;
+}
+@media only screen and (max-width: 500px) {
+    .employee-mobile-btn-text {
+        display: none;
+    }
+}
+
+
+.employee-tab-page.hide {
+    display: none;
+    transform: scale(0.75);
+    opacity: 0;
+}
+.employee-tab-page.show {
+    /* display: block; */
+    transform: scale(1);
+    opacity: 1;
+}
+.employee-tab-page {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 400ms linear, transform 300ms ease-in-out;
+}
+
+.table-col-1 {
+    width: 25%;
+}
+.table-col-2 {
+    width: 25%;
+}
+.table-col-3 {
+    width: 25%;
+}
+.table-col-4 {
+    width: 25%;
+}
+@media only screen and (max-width: 576px) {
+    .table-col-1 {
+        width: 34%;
+    }
+    .table-col-2 {
+        width: 22%;
+    }
+    .table-col-3 {
+        width: 22%;
+    }
+    .table-col-4 {
+        width: 22%;
+    }
+}
+
+.hms-table-1 tbody tr:hover {
+    background: #FFFFFF;
+}
+.hms-table-1 tbody tr:focus, .hms-table-1 tbody tr:active {
+    background: #FFFFFF;
+}
+
+.table-employee-position {
+    font-size: 14px;
+    line-height: 14px;
+}
+@media only screen and (max-width: 991.99px) {
+    .table-employee-position {
+        font-size: 12px;
+        line-height: 15px;
+        color: #AF13AF;
+    }
+}
+@media only screen and (max-width: 575.99px) {
+    .table-employee-position {
+        font-size: 8px;
+        line-height: 10px;
+        color: #AF13AF;
+    }
+}
+@media only screen and (max-width: 349.99px) {
+    .name-entry {
+        align-items: center !important;
+        justify-content: center !important;   
+    }
+    .name-wrap {
+        flex-direction: column;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .name-wrap .ratio {
+        margin-bottom: 5px;
+    }
+}
+.status-btn {
+    outline: none;
+}

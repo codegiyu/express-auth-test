@@ -1,0 +1,41 @@
+body {
+    background-color: #FFFFFF;
+    background-image: url(../img/da-admin-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 65%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #1a1a1a;
+}
+.admin-signup-input {
+    border: 0.75px solid #CAD4DD;
+    border-radius: 5px !important;
+} 
+a {
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 575.99px) {
+    .admin-signup-input{
+        border: 0.75px solid #1A1A1A;
+    }
+}
+
+@media only screen and (max-width: 575.99px) {
+    body {
+        background-color: #FFFFFF;
+        background-image: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #1a1a1a;
+    }
+    .admin-signup {
+        background-color: #FFFFFF;
+    }
+    
+}
