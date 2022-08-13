@@ -19,14 +19,21 @@
     <link rel="manifest" href="site.webmanifest">
 </head>
 <body>
+    <% if (messages.error) { %>
+        <p style="color:red"><%- messages.error %></p>
+    <% } %>
+        
+    <% if (messages.success) { %>
+        <p style="color:green"><%- messages.success %></p>
+    <% } %>
     <header>
         <nav class="navbar bg-white d-flex align-items-center justify-content-between border-none lg-border-bottom hms-border m-0 p-0 py-3 py-lg-2">
-            <a href="index.html" class="navbar-brand height-50px md-height-75px ms-3 ms-md-5 ms-lg-4 ms-xl-5">
+            <a href="/" class="navbar-brand height-50px md-height-75px ms-3 ms-md-5 ms-lg-4 ms-xl-5">
                 <img src="img/logo.png" alt="Our Logo" class="h-100">
             </a>
             <div class="d-none d-lg-flex align-items-center">
                 <h5 class="fs-headline-3 text-grey-4 fw-700 me-3">Employees</h5>
-                <form id="nav-search-form" action="" method="post">
+                <form id="nav-search-form" action="/form/search" method="post">
                     <div class="nav-input-wrap d-flex border hms-border bdr-rad-1">
                         <button type="submit" id="nav-search-btn" class="input-button bg-neutral-5 w-auto fs-form-input text-grey-6 px-3 py-3"><i class="fa-solid fa-magnifying-glass fs-form-input"></i></button>
                         <input type="search" id="nav-search-input" name="search" class="form-input-footer bg-neutral-5 text-grey-1 fs-form-input width-250px xl-width-350px py-3 pe-3" placeholder="Search employees" autocomplete="name" required>
@@ -35,11 +42,11 @@
             </div>
             <div class="user d-none me-3 me-lg-4 me-xl-5 d-lg-flex align-items-center">
                 <div class="user-text d-none d-lg-flex flex-column justify-content-center me-lg-4">
-                    <h6 class="user-name text-pink fs-body-2 fw-700 m-0">Kingston I.</h6>
-                    <p class="user-role text-grey-1 text-center fs-input m-0 mt-1">Admin</p>
+                    <h6 class="user-name text-pink fs-body-2 fw-700 m-0"><%= userName %></h6>
+                    <p class="user-role text-grey-1 text-center fs-input m-0 mt-1"><%= userPosition %></p>
                 </div>
                 <div class="user-pic">
-                    <img src="img/anonymous.png" alt="User image" class="user-photo img-fluid">
+                    <img src="img/<%= userPhoto %>" alt="User image" class="user-photo img-fluid">
                 </div>
             </div>
             <button class="navbar-toggler bg-pink-1 d-block d-lg-none py-2 px-3 me-3 me-md-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminMobileMenu" aria-controls="adminMobileMenu">
@@ -52,26 +59,26 @@
                 <div class="offcanvas-body p-0">
                     <div class="user mb-4 ms-2 d-flex align-items-center">
                         <div class="offcanvas-user-pic width-75px height-75px">
-                            <img src="img/anonymous.png" alt="User image" class="user-photo img-fluid">
+                            <img src="img/<%= userPhoto %>" alt="User image" class="user-photo img-fluid">
                         </div>
                         <div class="user-text d-flex flex-column justify-content-center ms-2">
-                            <h6 class="user-name text-pink fs-body-2 fw-700 m-0">Kingston I.</h6>
-                            <p class="user-role text-grey-1 text-center fs-input m-0 mt-1">Admin</p>
+                            <h6 class="user-name text-pink fs-body-2 fw-700 m-0"><%= userName %></h6>
+                            <p class="user-role text-grey-1 text-center fs-input m-0 mt-1"><%= userPosition %></p>
                         </div>
                     </div>
                     <div class="sidenav bg-white d-flex flex-column justify-content-between">
                         <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1">
-                            <a href="index.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                            <a href="/" class="text-decoration-none bg-white ps-4 py-2 width-98">
                                 <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="tabler:layout-dashboard"></span> Dashboard</p>
                             </a>
                         </div>
                         <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1 active">
-                            <a href="employees.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                            <a href="/employees" class="text-decoration-none bg-white ps-4 py-2 width-98">
                                 <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="prime:id-card"></span> Employees</p>
                             </a>
                         </div>
                         <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1">
-                            <a href="settings.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                            <a href="/settings" class="text-decoration-none bg-white ps-4 py-2 width-98">
                                 <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:settings-24-regular" data-rotate="90deg"></span> Settings</p>
                             </a>
                         </div>
@@ -86,7 +93,7 @@
                                             <h6 class="text-center fs-body-2 text-black fw-700 mt-4">Are you sure you want to logout?</h6>
                                             <div class="d-flex justify-content-between pt-2 pb-4">
                                                 <button type="button" class="ghost-primary-btn width-48 text-center fs-body-2 fw-700 text-pink bdr-rad-2 py-3 my-3" data-bs-dismiss="modal" aria-label="Close">No</button>
-                                                <a href="login.html" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
+                                                <a href="/logout" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -115,17 +122,17 @@
             <div class="col-lg-2 d-none d-lg-block bg-neutral-5 border-end hms-border p-0 m-0">
                 <div class="sidenav bg-neutral-5 d-flex flex-column justify-content-between">
                     <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1">
-                        <a href="index.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                        <a href="/" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
                             <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="tabler:layout-dashboard"></span> Dashboard</p>
                         </a>
                     </div>
                     <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1 active">
-                        <a href="employees.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                        <a href="/employees" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
                             <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="prime:id-card"></span> Employees</p>
                         </a>
                     </div>
                     <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1">
-                        <a href="settings.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                        <a href="/settings" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
                             <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:settings-24-regular" data-rotate="90deg"></span> Settings</p>
                         </a>
                     </div>
@@ -140,7 +147,7 @@
                                         <h6 class="text-center fs-body-2 text-black fw-700 mt-4">Are you sure you want to logout?</h6>
                                         <div class="d-flex justify-content-between pt-2 pb-4">
                                             <button type="button" class="ghost-primary-btn width-48 text-center fs-body-2 fw-700 text-pink bdr-rad-2 py-3 my-3" data-bs-dismiss="modal" aria-label="Close">No</button>
-                                            <a href="login.html" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
+                                            <a href="/logout" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -205,29 +212,31 @@
                             </tr>
                         </thead>
                         <tbody id="all-employees-table">
+                            <% employees.forEach(function(employee) { %>
                             <tr>
                                 <td>
                                     <div class="name-entry d-flex align-items-center w-100 h-100 ps-1 ps-md-3 py-4">
                                         <div class="name-wrap d-flex align-items-end">
                                             <div class="ratio ratio-1x1 width-40px rounded-circle d-inline-block me-2">
-                                                <img src="img/anonymous.png" alt="emeka-driver" class="img-fluid">
+                                                <img src="img/<%= employee.photo %>" alt="" class="img-fluid">
                                             </div>
                                             <div class="d-flex flex-column text-center align-items-center justify-content-between h-100">
-                                                <p class="table-employee-name my-auto">Emeka Ogwo</p>
-                                                <p class="table-employee-position my-auto text-grey-5">Driver</p>
+                                                <p class="table-employee-name my-auto"><%= employee.name %></p>
+                                                <p class="table-employee-position my-auto text-grey-5"><%= employee.position %></p>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>Logistics</td>
-                                <td>08097899789</td>
+                                <td><%= employee.department %></td>
+                                <td><%= employee.phone %></td>
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center h-100 my-auto"> 
-                                        <p class="status-text text-center ms-auto me-1 me-sm-3 text-pink m-0">Active</p>
-                                        <button class="status-btn bg-white border-none h-auto w-auto p-0 me-1 me-sm-2 me-md-5 me-lg-4 me-lg-5 ms-md-4 my-0 bg-sunset-pink" type="button"><span class="fs-button m-0 p-0"><i class="fa-solid fa-ellipsis-vertical m-0 p-0"></i></span></button>
+                                        <p class="status-text text-center text-pink m-0">Active</p>
+                                        <!-- <button class="status-btn bg-white border-none h-auto w-auto p-0 me-1 me-sm-2 me-md-5 me-lg-4 me-lg-5 ms-md-4 my-0 bg-sunset-pink" type="button"><span class="fs-button m-0 p-0"><i class="fa-solid fa-ellipsis-vertical m-0 p-0"></i></span></button> -->
                                     </div>
                                 </td>
                             </tr>
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>
@@ -247,29 +256,31 @@
                             </tr>
                         </thead>
                         <tbody id="active-employees-table">
+                            <% employees.forEach(function(employee) { %>
                             <tr>
                                 <td>
                                     <div class="name-entry d-flex align-items-center w-100 h-100 ps-1 ps-md-3 py-4">
                                         <div class="name-wrap d-flex align-items-end">
                                             <div class="ratio ratio-1x1 width-40px rounded-circle d-inline-block me-2">
-                                                <img src="img/da-ejima-receptionist.png" alt="emeka-driver" class="img-fluid">
+                                                <img src="img/<%= employee.photo %>" alt="" class="img-fluid">
                                             </div>
-                                            <div class="d-flex flex-column align-items-center text-center h-100">
-                                                <p class="table-employee-name my-auto">Ejima Ebiojo</p>
-                                                <p class="table-employee-position my-auto text-grey-5">Receptionist</p>
+                                            <div class="d-flex flex-column text-center align-items-center justify-content-between h-100">
+                                                <p class="table-employee-name my-auto"><%= employee.name %></p>
+                                                <p class="table-employee-position my-auto text-grey-5"><%= employee.position %></p>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>Hospitality</td>
-                                <td>08123456789</td>
+                                <td><%= employee.department %></td>
+                                <td><%= employee.phone %></td>
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center h-100 my-auto"> 
-                                        <p class="status-text text-center ms-auto me-1 me-sm-3 text-pink m-0">Active</p>
-                                        <button class="status-btn bg-white border-none h-auto w-auto p-0 me-1 me-sm-2 me-md-5 me-lg-4 me-lg-5 ms-md-4" type="button"><span class="fs-button m-0 p-0"><i class="fa-solid fa-ellipsis-vertical m-0 p-0"></i></span></button>
+                                        <p class="status-text text-center text-pink m-0">Active</p>
+                                        <!-- <button class="status-btn bg-white border-none h-auto w-auto p-0 me-1 me-sm-2 me-md-5 me-lg-4 me-lg-5 ms-md-4 my-0 bg-sunset-pink" type="button"><span class="fs-button m-0 p-0"><i class="fa-solid fa-ellipsis-vertical m-0 p-0"></i></span></button> -->
                                     </div>
                                 </td>
                             </tr>
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>
@@ -289,29 +300,7 @@
                             </tr>
                         </thead>
                         <tbody id="inactive-employees-table">
-                            <tr>
-                                <td>
-                                    <div class="name-entry d-flex align-items-center w-100 h-100 ps-1 ps-md-3 py-4">
-                                        <div class="name-wrap d-flex align-items-end">
-                                            <div class="ratio ratio-1x1 width-40px rounded-circle d-inline-block me-2">
-                                                <img src="img/da-emeka-driver.png" alt="emeka-driver" class="img-fluid">
-                                            </div>
-                                            <div class="d-flex flex-column text-center align-items-center justify-content-between h-100">
-                                                <p class="table-employee-name my-auto">Emeka Ogwo</p>
-                                                <p class="table-employee-position my-auto text-grey-5">Driver</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Logistics</td>
-                                <td>08097899789</td>
-                                <td>
-                                    <div class="d-flex justify-content-center align-items-center h-100 my-auto"> 
-                                        <p class="status-text text-center ms-auto me-1 me-sm-3 text-pink m-0">Active</p>
-                                        <button class="status-btn bg-white border-none h-auto w-auto p-0 me-1 me-sm-2 me-md-5 me-lg-4 me-lg-5 ms-md-4 my-0 bg-sunset-pink" type="button"><span class="fs-button m-0 p-0"><i class="fa-solid fa-ellipsis-vertical m-0 p-0"></i></span></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>

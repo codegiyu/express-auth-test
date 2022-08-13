@@ -1,10 +1,16 @@
 var mysql = require('mysql');
-var connection = mysql.createConnection({
+
+var pool = mysql.createPool({
+  connectionLimit: 100,
   host: 'remotemysql.com',
   user: 'dXjq4VkJVU',
   password:'QxXq74efsM',
-  database:'dXjq4VkJVU'
+  database:'dXjq4VkJVU',
+  port: process.env.PORT || 3000
 });
+
+let db = {};
+
 connection.connect(function(error){
    if(!!error){
      console.log(error);
@@ -12,4 +18,4 @@ connection.connect(function(error){
      console.log('Connected!:)');
    }
  });  
-module.exports = connection;
+module.exports = db;

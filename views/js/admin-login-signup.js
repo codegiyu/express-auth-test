@@ -1,5 +1,5 @@
-let position = document.querySelector('#admin-signup-position');
-let department = document.querySelector('#admin-signup-department');
+let position = document.querySelector('#position');
+let department = document.querySelector('#department');
 console.log(position)
 console.log(department)
 position.addEventListener("change", () => {

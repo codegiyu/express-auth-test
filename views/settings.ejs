@@ -19,10 +19,17 @@
     <link rel="manifest" href="site.webmanifest">
 </head>
 <body>
+    <% if (messages.error) { %>
+        <p style="color:red"><%- messages.error %></p>
+    <% } %>
+        
+    <% if (messages.success) { %>
+        <p style="color:green"><%- messages.success %></p>
+    <% } %>
 
     <header>
         <nav class="navbar bg-white d-flex align-items-center justify-content-between border-none lg-border-bottom hms-border m-0 p-0 py-3 py-lg-2">
-            <a href="index.html" class="navbar-brand height-50px md-height-75px ms-3 ms-md-5 ms-lg-4 ms-xl-5">
+            <a href="/" class="navbar-brand height-50px md-height-75px ms-3 ms-md-5 ms-lg-4 ms-xl-5">
                 <img src="img/logo.png" alt="Our Logo" class="h-100">
             </a>
             <div class="d-none d-lg-flex align-items-center">
@@ -30,11 +37,11 @@
             </div>
             <div class="user d-none me-3 me-lg-4 me-xl-5 d-lg-flex align-items-center">
                 <div class="user-text d-none d-lg-flex flex-column justify-content-center me-lg-4">
-                    <h6 class="user-name text-pink fs-body-2 fw-700 m-0">Kingston I.</h6>
-                    <p class="user-role text-grey-1 text-center fs-input m-0 mt-1">Admin</p>
+                    <h6 class="user-name text-pink fs-body-2 fw-700 m-0"><%= userName %></h6>
+                    <p class="user-role text-grey-1 text-center fs-input m-0 mt-1"><%= userPosition %></p>
                 </div>
                 <div class="user-pic">
-                    <img id="user-photo" src="img/anonymous.png" alt="User image" class="user-photo img-fluid">
+                    <img id="user-photo" src="img/<%= userPhoto %>" alt="User image" class="user-photo img-fluid">
                 </div>
             </div>
             <button class="navbar-toggler bg-pink-1 d-block d-lg-none py-2 px-3 me-3 me-md-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminMobileMenu" aria-controls="adminMobileMenu">
@@ -47,26 +54,26 @@
                 <div class="offcanvas-body p-0">
                     <div class="user mb-4 ms-2 d-flex align-items-center">
                         <div class="offcanvas-user-pic width-75px height-75px">
-                            <img id="user-photo-mob" src="img/anonymous.png" alt="User image" class="user-photo img-fluid">
+                            <img id="user-photo-mob" src="img/<%= userPhoto %>" alt="User image" class="user-photo img-fluid">
                         </div>
                         <div class="user-text d-flex flex-column justify-content-center ms-2">
-                            <h6 class="user-name text-pink fs-body-2 fw-700 m-0">Kingston I.</h6>
-                            <p class="user-role text-grey-1 text-center fs-input m-0 mt-1">Admin</p>
+                            <h6 class="user-name text-pink fs-body-2 fw-700 m-0"><%= userName %></h6>
+                            <p class="user-role text-grey-1 text-center fs-input m-0 mt-1"><%= userPosition %></p>
                         </div>
                     </div>
                     <div class="sidenav bg-white d-flex flex-column justify-content-between">
                         <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1">
-                            <a href="index.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                            <a href="/" class="text-decoration-none bg-white ps-4 py-2 width-98">
                                 <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="tabler:layout-dashboard"></span> Dashboard</p>
                             </a>
                         </div>
                         <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1">
-                            <a href="employees.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                            <a href="/employees" class="text-decoration-none bg-white ps-4 py-2 width-98">
                                 <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="prime:id-card"></span> Employees</p>
                             </a>
                         </div>
                         <div class="sidenav-link bg-white d-flex align-items-center justify-content-start my-1 active">
-                            <a href="settings.html" class="text-decoration-none bg-white ps-4 py-2 width-98">
+                            <a href="/settings" class="text-decoration-none bg-white ps-4 py-2 width-98">
                                 <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:settings-24-regular" data-rotate="90deg"></span> Settings</p>
                             </a>
                         </div>
@@ -81,7 +88,7 @@
                                             <h6 class="text-center fs-body-2 text-black fw-700 mt-4">Are you sure you want to logout?</h6>
                                             <div class="d-flex justify-content-between pt-2 pb-4">
                                                 <button type="button" class="ghost-primary-btn width-48 text-center fs-body-2 fw-700 text-pink bdr-rad-2 py-3 my-3" data-bs-dismiss="modal" aria-label="Close">No</button>
-                                                <a href="login.html" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
+                                                <a href="/logout" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -99,17 +106,17 @@
             <div class="col-lg-2 d-none d-lg-block bg-neutral-5 border-end hms-border p-0 m-0">
                 <div class="sidenav bg-neutral-5 d-flex flex-column justify-content-between">
                     <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1">
-                        <a href="index.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                        <a href="/" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
                             <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="tabler:layout-dashboard"></span> Dashboard</p>
                         </a>
                     </div>
                     <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1">
-                        <a href="employees.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                        <a href="/employees" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
                             <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="prime:id-card"></span> Employees</p>
                         </a>
                     </div>
                     <div class="sidenav-link bg-neutral-5 d-flex align-items-center justify-content-start my-1 active">
-                        <a href="settings.html" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
+                        <a href="/settings" class="text-decoration-none bg-neutral-5 ps-lg-4 ps-xl-4 py-2 width-98">
                             <p class="text-grey-1 fs-sidenav text-start mx-0 my-0 ms-xl-2"><span class="iconify fs-body-2" data-icon="fluent:settings-24-regular" data-rotate="90deg"></span> Settings</p>
                         </a>
                     </div>
@@ -124,7 +131,7 @@
                                         <h6 class="text-center fs-body-2 text-black fw-700 mt-4">Are you sure you want to logout?</h6>
                                         <div class="d-flex justify-content-between pt-2 pb-4">
                                             <button type="button" class="ghost-primary-btn width-48 text-center fs-body-2 fw-700 text-pink bdr-rad-2 py-3 my-3" data-bs-dismiss="modal" aria-label="Close">No</button>
-                                            <a href="login.html" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
+                                            <a href="/logout" class="text-decoration-none width-48 p-0 my-3"><button type="button" class="primary-btn width-100 text-center fs-body-2 fw-700 text-white bdr-rad-2 py-3">Yes</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +145,7 @@
                 <div class="container py-4 px-3">
                     <div class="mobile-img-block d-flex d-lg-none justify-content-center mt-0">
                         <div class="rounded-circle width-180px height-180px sm-width-100px sm-height-100px md-width-150px md-height-150px position-relative">
-                            <img src="img/anonymous.png" alt="user image" id="mobile-user-img" class="user-photo img-fluid rounded-circle">
+                            <img src="img/<%= userPhoto %>" alt="user image" id="mobile-user-img" class="user-photo img-fluid rounded-circle">
                             <div  id="mobile-picture-btn-wrap" class="mobile-picture-btn-wrap mobile-camera-icon position-absolute hide">
                                 <div id="mobile-picture-btn" class="d-flex align-items-center justify-content-center rounded-circle width-35px md-width-50px height-35px md-height-50px bg-pink-1" role="button" data-bs-toggle="modal" data-bs-target="#pictureChangeModal">
                                     <img src="img/camera-icon.png" alt="">
@@ -152,17 +159,17 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body p-4 pt-0 p-md-5">
-                                                <form id="profile-change-mobile" method="" enctype="multipart/form-data" class="width-100">
+                                                <form action="/form/update-photo" id="profile-change-mobile" method="post" enctype="multipart/form-data" class="width-100">
                                                     <div class="d-flex justify-content-center mb-4">
                                                         <div class="profile-pic-wrap ratio ratio-1x1 width-150px rounded-circle">
-                                                            <img id="profile-img-mobile" src="img/anonymous.png" alt="" class="user-photo img-fluid">
+                                                            <img id="profile-img-mobile" src="img/<%= userPhoto %>" alt="" class="user-photo img-fluid">
                                                         </div>
                                                     </div>
                                                     <p class="fs-body-1 text-grey-1 mb-2">New Profile Picture</p>
                                                     <div class="d-flex flex-column mb-4">
                                                         <label for="profile-picture-mobile" class="w-100 bg-neutral-3 text-nowrap py-3 px-3 bdr-rad-2 mb-3">
                                                             <p class="fs-sidenav m-0 text-nowrap text-center mx-5">Choose Image</p>
-                                                            <input type="file" accept="image/png, image/jpeg" id="profile-picture-mobile" name="profile-picture-mobile" class="form-input-1 bg-neutral-3 py-3 px-5 fs-sidenav bdr-rad-2">
+                                                            <input type="file" accept="image/png, image/jpeg" id="profile-picture-mobile" name="photo" class="form-input-1 bg-neutral-3 py-3 px-5 fs-sidenav bdr-rad-2">
                                                         </label>
                                                         <div class="w-100 py-3 px-0 bg-white border d-inline-block hms2-border bdr-rad-2">
                                                             <p id="image-name-mobile" class="text-grey-1 text-center fs-sidenav text-nowrap m-0 p-0">No File Selected</p>
@@ -180,8 +187,8 @@
                         </div>
                     </div>
                     <div class="user-text d-flex d-lg-none flex-column justify-content-center mt-3 mb-4">
-                        <h6 class="user-name text-pink fs-body-2 text-center fw-700 m-0">Kingston I.</h6>
-                        <p class="user-role text-grey-1 text-center fs-input m-0 mt-1">Admin</p>
+                        <h6 class="user-name text-pink fs-body-2 text-center fw-700 m-0"><%= userName %></h6>
+                        <p class="user-role text-grey-1 text-center fs-input m-0 mt-1"><%= userPosition %></p>
                     </div>
                     <div class="tab-btns-row order-1 order-lg-2 mb-3 mt-4 mt-lg-5">
                         <div class="tabs-subnav d-flex justify-content-between align-items-center width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-50 xl-width-45">
@@ -191,7 +198,7 @@
                     </div>
                     <div id="change-password" class="w-100 settings-tab-page lg-bg-neutral-4 py-3 px-1 p-lg-3">
                         <div class="lg-bg-white p-0 p-lg-3">
-                            <form method="" enctype="multipart/form-data" class="width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-45 xl-width-40">
+                            <form action="/form/update-password" method="post" class="width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-45 xl-width-40">
                                 <div class="input-group width-100 mt-2 mb-4 mb-lg-5 position-relative">
                                     <p class="fs-settings-label mb-1">Current Password</p>
                                     <input type="password" name="current-password" id="current-password" class="form-input-1 box-shad-none lg-box-shad-1 border dark-border lg-hms2-border w-100 fs-form-input bdr-rad-2 py-3 px-5 px-lg-3 mt-1 text-black" placeholder="Current Password">
@@ -230,16 +237,10 @@
                     </div>
                     <div id="edit-profile" class="w-100 settings-tab-page lg-bg-neutral-4 py-3 px-1 p-lg-3 hide">
                         <div class="lg-bg-white p-0 p-lg-3 mb-5">
-                            <form method="" enctype="multipart/form-data" class="width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-45 xl-width-40">
+                            <form action="/form/edit-profile" method="post" class="width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-45 xl-width-40">
                                 <div class="input-group width-100 mt-2 mb-4 mb-lg-5 position-relative">
-                                    <p class="fs-settings-label mb-1">First Name</p>
-                                    <input type="text" name="first-name" id="first-name" class="form-input-1 profile-input box-shad-none lg-box-shad-1 border dark-border lg-hms2-border w-100 fs-form-input bdr-rad-2 py-3 px-5 px-lg-3 mt-1 text-black" placeholder="Ife">
-                                    <img src="img/name-input.png" alt="" class="input-icon d-lg-none">
-                                    <p class="input-notification-text fw-700 fs-form-input mt-1 position-absolute top-100 start-0"></p>
-                                </div>
-                                <div class="input-group width-100 mt-2 mb-4 mb-lg-5 position-relative">
-                                    <p class="fs-settings-label mb-1">Last Name</p>
-                                    <input type="text" name="last-name" id="last-name" class="form-input-1 profile-input box-shad-none lg-box-shad-1 border dark-border lg-hms2-border w-100 fs-form-input bdr-rad-2 py-3 px-5 px-lg-3 mt-1 text-black" placeholder="Tobenna">
+                                    <p class="fs-settings-label mb-1">Name</p>
+                                    <input type="text" name="name" id="name" class="form-input-1 profile-input box-shad-none lg-box-shad-1 border dark-border lg-hms2-border w-100 fs-form-input bdr-rad-2 py-3 px-5 px-lg-3 mt-1 text-black" placeholder="Ife">
                                     <img src="img/name-input.png" alt="" class="input-icon d-lg-none">
                                     <p class="input-notification-text fw-700 fs-form-input mt-1 position-absolute top-100 start-0"></p>
                                 </div>
@@ -249,9 +250,21 @@
                                     <img src="img/password-input.png" alt="" class="input-icon d-lg-none">
                                     <p class="input-notification-text fw-700 fs-form-input mt-1 position-absolute top-100 start-0"></p>
                                 </div>
+                                <div class="input-group width-100 mb-3">
+                                    <p class="fs-form-input mb-1 fw-500">Phone Number</p>
+                                    <input type="tel" name="phone" id="phone" class="form-input-1 admin-signup-input  width-100 fs-form-input py-3 px-5 mt-1 text-black" placeholder="08012345678">
+                                    <img src="img/name-input.png" alt="" class="input-icon">
+                                    <p class="input-notification-text fw-700 fs-form-input mt-1 position-absolute top-100 start-0"></p>
+                                </div>
                                 <div class="input-group width-100 mt-2 mb-4 mb-lg-5 position-relative">
                                     <p class="fs-settings-label mb-1">Position</p>
                                     <input type="text" name="position" id="position" class="form-input-1 profile-input box-shad-none lg-box-shad-1 border dark-border lg-hms2-border w-100 fs-form-input bdr-rad-2 py-3 px-5 px-lg-3 mt-1 text-black" placeholder="Receptionist">
+                                    <img src="img/name-input.png" alt="" class="input-icon d-lg-none">
+                                    <p class="input-notification-text fw-700 fs-form-input mt-1 position-absolute top-100 start-0"></p>
+                                </div>
+                                <div class="input-group width-100 mt-2 mb-4 mb-lg-5 position-relative">
+                                    <p class="fs-form-input mb-1 fw-500">Department</p>
+                                    <input type="text" name="department" id="department" class="form-input-1 admin-signup-input  width-100 fs-form-input py-3 px-5 mt-1 text-black" placeholder="Department" disabled>
                                     <img src="img/name-input.png" alt="" class="input-icon d-lg-none">
                                     <p class="input-notification-text fw-700 fs-form-input mt-1 position-absolute top-100 start-0"></p>
                                 </div>
@@ -264,17 +277,17 @@
                             <p class="fs-body-2 fw-700 text-grey-1 p-0 m-0">Profile Picture</p>
                         </div>
                         <div class="d-none d-lg-block lg-bg-white p-0 p-lg-3">
-                            <form method="" enctype="multipart/form-data" class="width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-45 xl-width-40">
+                            <form action="/form/update-photo" method="post" enctype="multipart/form-data" class="width-100 sm-width-80 md-width-70 mx-sm-auto mx-md-auto ms-lg-0 me-lg-auto lg-width-45 xl-width-40">
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="profile-pic-wrap ratio ratio-1x1 width-150px rounded-circle">
-                                        <img id="profile-img-desktop" src="img/anonymous.png" alt="" class="user-photo img-fluid">
+                                        <img id="profile-img-desktop" src="img/<%= userPhoto %>" alt="" class="user-photo img-fluid">
                                     </div>
                                 </div>
                                 <p class="fs-body-1 text-grey-2 mb-1">New Profile Picture</p>
                                 <div class="d-flex justify-content-start align-items-center mb-4">
                                     <label for="profile-picture" class="w-auto bg-neutral-3 text-nowrap py-3 px-3 bdr-rad-2">
                                         <p class="fs-sidenav m-0 text-nowrap mx-5">Choose Image</p>
-                                        <input type="file" accept="image/png, image/jpeg" id="profile-picture" name="profile-picture" class="form-input-1 bg-neutral-3 py-3 px-5 fs-sidenav bdr-rad-2">
+                                        <input type="file" accept="image/png, image/jpeg" id="profile-picture" name="photo" class="form-input-1 bg-neutral-3 py-3 px-5 fs-sidenav bdr-rad-2">
                                     </label>
                                     <div class="w-auto py-3 px-5 bg-white border d-inline-block hms2-border bdr-rad-2">
                                         <p id="image-name" class="text-grey-1 text-center fs-sidenav text-nowrap mx-lg-3 mx-xl-5 my-0 p-0">No File Selected</p>
