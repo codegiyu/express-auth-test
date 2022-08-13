@@ -2,6 +2,7 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cors = require("cors");
+var ejs = require("ejs");
 // var corsOptions = { origin: "http://localhost:8081"};
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
@@ -18,25 +19,19 @@ const options = {
     password:'QxXq74efsM',
     database:'dXjq4VkJVU',
     port: PORT,
-    createDatabaseTable: false,
-    schema: {
-        tableName: 'custom_sessions_table_name',
-		columnNames: {
-			session_id: 'custom_session_id',
-			expires: 'custom_expires_column_name',
-			data: 'custom_data_column_name',
-            email: '',
-            name: '',
-            photo: '',
-            position: '',
-            department: '',
-            password: '',
-        }
-    }
+    createDatabaseTable: true,
+    // schema: {
+    //     tableName: 'custom_sessions_table_name',
+	// 	columnNames: {
+	// 		session_id: 'custom_session_id',
+	// 		expires: 'custom_expires_column_name',
+	// 		data: 'custom_data_column_name'
+    //     }
+    // }
 };
 const sessionStore = new mysqlStore(options);
 
-var PORT = process.env.PORT || 3000;
+var PORT = 3000;
 const THIRTY_MINUTES = 1000 * 60 * 30;
 
 var mysql = require("mysql");
@@ -47,7 +42,8 @@ var formRouter = require("./routes/forms");
 
 var app = express();
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './views'));
+app.engine('ejs', ejs.renderFile);
 app.set('view engine', 'ejs');
 
 app.use(logger("dev"));
@@ -55,7 +51,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "")));
+app.use(express.static(path.join(__dirname, "/views")));
 
 app.use(session({
     name: "HMS",
@@ -71,7 +67,7 @@ app.use(session({
 }));
 
 app.use(flash());
-app.use(expressValidator());
+// app.use(expressValidator());
 
 app.use("/", pageRouter);
 app.use("/forms", formRouter);

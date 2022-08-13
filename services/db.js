@@ -6,16 +6,17 @@ var pool = mysql.createPool({
   user: 'dXjq4VkJVU',
   password:'QxXq74efsM',
   database:'dXjq4VkJVU',
-  port: process.env.PORT || 3000
+  port: 3306
 });
 
 let db = {};
 
-connection.connect(function(error){
+pool.getConnection(function(error){
    if(!!error){
      console.log(error);
    }else{
      console.log('Connected!:)');
    }
  });  
+
 module.exports = db;

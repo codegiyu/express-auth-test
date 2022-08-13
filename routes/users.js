@@ -1,8 +1,8 @@
 var express = require("express");
-var router = express.Router();
+var pageRouter = express.Router();
 var db = require("../services/db");
 
-router.get("/", (req, res, next) => {
+pageRouter.get("/", (req, res, next) => {
     let sess = req.session;
     if (req.session.loggedin) {
         res.render("index", {
@@ -16,11 +16,11 @@ router.get("/", (req, res, next) => {
     }
 })
 
-router.get("/login", (req, res, next) => {
+pageRouter.get("/login", (req, res, next) => {
     res.render("login", {email: "", password: ""});
 })
 
-router.get("/signup", (req, res, next) => {
+pageRouter.get("/signup", (req, res, next) => {
     res.render("sign-up", {
         name: "",
         email: "",
@@ -33,15 +33,15 @@ router.get("/signup", (req, res, next) => {
     });
 })
 
-router.get("/reset-password", (req, res, next) => {
+pageRouter.get("/reset-password", (req, res, next) => {
     res.render("reset-password", {email: ""});
 })
 
-router.get("/reset-password-link", (req, res, next) => {
+pageRouter.get("/reset-password-link", (req, res, next) => {
     res.render("reset-password-link");
 })
 
-router.get("/settings", (req, res, next) => {
+pageRouter.get("/settings", (req, res, next) => {
     let sess = req.session;
     if (req.session.loggedin) {
         res.render("settings", {
@@ -58,7 +58,7 @@ router.get("/settings", (req, res, next) => {
     }
 })
 
-router.get("/employees", (req, res, next) => {
+pageRouter.get("/employees", (req, res, next) => {
     let sess = req.session;
     if (req.session.loggedin) {
         db.query('SELECT * FROM users', (err, rows, fields) => {
@@ -80,7 +80,7 @@ router.get("/employees", (req, res, next) => {
     }
 })
 
-router.get("/logout", (req, res) => {
+pageRouter.get("/logout", (req, res) => {
     req.session.destroy();
     req.flash("success", "Login Again Here");
     res.redirect("/login");
