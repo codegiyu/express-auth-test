@@ -7,7 +7,7 @@
     <meta name="description" content="Experience Life - Make yourself comfortable.">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- <link rel="stylesheet" href="css/swiper-bundle.min.css"> -->
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -19,13 +19,7 @@
     <link rel="manifest" href="site.webmanifest">
 </head>
 <body class="lg-bg-neutral-6">
-    <% if (messages.error) { %>
-        <p style="color:red"><%- messages.error %></p>
-    <% } %>
-        
-    <% if (messages.success) { %>
-        <p style="color:green"><%- messages.success %></p>
-    <% } %>
+    
     <header>
         <nav class="navbar bg-white d-flex align-items-center justify-content-between border-none lg-border-bottom hms-border m-0 p-0 py-3 py-lg-2">
             <a href="/" class="navbar-brand height-50px md-height-75px ms-3 ms-md-5 ms-lg-4 ms-xl-5">
@@ -160,6 +154,19 @@
             </div>
 
             <div class="main-content col-12 col-lg-10 position-relative">
+                <div class="container my-2">
+                    <% if (messages.error) { %>
+                        <div class="p-2 text-center my-1 bdr-rad-1" style="background: #FAA0A0;">
+                        <p class="fs-form-input fw-600 m-0" style="color:red"><%- messages.error %></p>
+                        </div>
+                    <% } %>
+                        
+                    <% if (messages.success) { %>
+                        <div class="p-2 text-center my-1 bdr-rad-1" style="background: #A9DFBF;">
+                        <p class="fs-form-input fw-600 m-0" style="color:green"><%- messages.success %></p>
+                        </div>
+                    <% } %>
+                </div>
                 <div class="container py-4 px-0 px-lg-4">
                     <div class="row mt-0 mt-lg-3">
                         <div class="mb-3 col-lg-3 col-md-6 col-12 px-3 px-md-1">
@@ -343,7 +350,7 @@
                         </div>
                     </div>
                     
-                    <!-- <div class="row mt-0 mt-lg-3 px-1">
+                    <div class="row mt-0 mt-lg-3 px-1">
                         <div class="content-box-2 bg-white py-4 px-4 position-relative">
                             <div class="row">
                                 <div class="col-12 col-lg-6">
@@ -399,7 +406,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -410,7 +417,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="js/aos.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
+    <!-- <script src="js/swiper-bundle.min.js"></script> -->
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <!-- <script src="js/main.js"></script> -->
     <script src="js/dashboard.js"></script>

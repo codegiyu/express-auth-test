@@ -3,7 +3,7 @@ var formRouter = express.Router();
 var db = require("../services/db");
 const { body, validationResult }= require('express-validator');
 
-formRouter.post("/form/login", (req, res, next) => {
+formRouter.post("/login", (req, res, next) => {
     let email = req.body.email;
     let password = req.body.password;
 

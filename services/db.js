@@ -19,4 +19,4 @@ pool.getConnection(function(error){
    }
  });  
 
-module.exports = db;
+module.exports = pool;

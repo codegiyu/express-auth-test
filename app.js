@@ -38,7 +38,7 @@ var mysql = require("mysql");
 const db = require("./services/db");
 
 var pageRouter = require("./routes/users");
-var formRouter = require("./routes/forms");
+// var formRouter = require("./routes/forms");
 
 var app = express();
 
@@ -70,11 +70,7 @@ app.use(flash());
 // app.use(expressValidator());
 
 app.use("/", pageRouter);
-app.use("/forms", formRouter);
-
-app.use(function(req, res, next) {
-    next(createError(404));
-});
+// app.use("/form", formRouter);
 
 app.use(function(err, req, res, next) {
     res.locals.message = err.message;
@@ -82,6 +78,11 @@ app.use(function(err, req, res, next) {
 
     res.status(err.status || 500);
     res.render("error");
+});
+
+app.use(function(req, res, next) {
+    next(createError(404));
+    // res.status(404).send("Sorry can't find that!");
 });
 
 app.listen(PORT, () => console.log(`HMS Test is running on port ${PORT}`));
