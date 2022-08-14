@@ -24,6 +24,7 @@
     "express-validator": "^6.14.2",
     "http-errors-enhanced": "^1.0.6",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19"
   }
 }
